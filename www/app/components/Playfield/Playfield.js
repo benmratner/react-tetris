@@ -11,18 +11,21 @@ constructor(props) {
 		const grid = []
 		const gridRow = []
 
-		for (let cols = 10; cols >= 0; cols--) {
+		for (let cols = 10; cols >= 1; cols--) {
 			gridRow.push(
-				<div className={styles.fieldSquare}>
+				<div className="fieldSquare">
+				X
 				</div>
 			)
 		}
-
-		for (let rows = 20; rows >= 0; rows--) {
-			<div className={Styles.fieldRow}>
-			grid.push(gridRow)
-			</div>
+		for (let rows = 20; rows >= 1; rows--) {
+			grid.push(
+				<div className="fieldRow">
+					{gridRow}
+				</div>
+			)
 		}
+		console.log(grid)
 
 		return grid;
 	}
@@ -34,7 +37,7 @@ constructor(props) {
 		// const cols = 10
 		const grid = this.getPlayfield();
 		return (
-			<div>
+			<div className="playfield">
 			{grid}
 			</div>
 		)
