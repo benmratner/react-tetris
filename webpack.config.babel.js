@@ -6,6 +6,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin'
 const LAUNCH_COMMAND = process.env.npm_lifecycle_event;
 const isProduction = LAUNCH_COMMAND === 'build-dist';
 process.env.BABEL_ENV = LAUNCH_COMMAND;
+process.traceDeprecation = true;
 
 const PATHS = {
     app: path.resolve(__dirname, 'www/app'),

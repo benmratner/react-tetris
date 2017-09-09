@@ -1,12 +1,12 @@
-import React from 'react';
+import React from 'react'
 
-class MainContainer extends React.Component {
-	constructor(props) {
-		super(props);
-		this.displayName = 'MainContainer';
+class MainContainer extends React.Component{
+	constructor (props){
+		super(props)
+		this.displayName = 'MainContainer'
 	}
 
-	render(){
+	render (){
 		return (
 			<div className="main-container">
 				Main Container
@@ -16,4 +16,4 @@ class MainContainer extends React.Component {
 	}
 }
 
-export default MainContainer;
+export default MainContainer

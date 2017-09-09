@@ -1,12 +1,12 @@
-import React from 'react';
-import {MainContainer} from 'containers';
-import {Playfield} from 'components'
+import React from 'react'
+import { MainContainer, } from 'containers'
+import { Playfield, } from 'components'
 
 
-class Home extends React.Component {
-constructor(props) {
-	super(props);
-	this.displayName = "Home";
+class Home extends React.Component{
+constructor (props){
+	super(props)
+	this.displayName = "Home"
 }
 
 
@@ -14,10 +14,10 @@ constructor(props) {
 		return (
 			<div>
 				<h1>Home Component</h1>
-				<Playfield />
+				<Playfield rows={20} cols={10}/>
 			</div>
 			)
 	}
 }
 
-export default Home;
+export default Home

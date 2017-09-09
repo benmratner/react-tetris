@@ -1,14 +1,14 @@
-import React from 'react';
-import {Switch, Route} from 'react-router-dom';
-import {MainContainer, HomeContainer} from 'containers';
+import React from 'react'
+import { Switch, Route, } from 'react-router-dom'
+import { MainContainer, HomeContainer, } from 'containers'
 
-const router = (
+const router =
     <div id={'main'}>
         <MainContainer />
     	<Switch>
     		<Route component={HomeContainer} />
     	</Switch>
     </div>
-	);
 
-export default router;
+
+export default router
