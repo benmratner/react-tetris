@@ -9,50 +9,71 @@ class Playfield extends Component{
 		this.displayName = "Home"
 
 		this.state = {
-			"blocksInPlay": []
+			"blocksInPlay": [],
+			"allColoredSquares": []
 		}
 	}
 	componentDidMount() {
-		this.setState({blocksInPlay: this.props.blocksInPlay})
+		// this.setState({blocksInPlay: this.props.blocksInPlay})
+		this.collateBlocks()
+
 		
 	}
 	componentWillReceiveProps(nextProps) {
-		this.setState({blocksInPlay: nextProps.blocksInPlay})
+		// this.setState({blocksInPlay: nextProps.blocksInPlay})
+		if (this.props.blocksInPlay !== nextProps.blocksInPlay){
+			this.collateBlocks()
+
+		}
+
+		if (this.props.blockTicks < nextProps.blockTicks){
+			this.fall()
+		
+
+		}
+
 		
 	}
 
 	collateBlocks(){
-		console.log(this.state.blocksInPlay)
-		let allColoredBlocks = []
-		for (let i = this.state.blocksInPlay.length - 1; i >= 0; i--) {
-			const { shape, color } = this.state.blocksInPlay[i];
+		let allColoredSquares = []
+		for (let i = this.props.blocksInPlay.length - 1; i >= 0; i--) {
+			const { shape, color } = this.props.blocksInPlay[i];
 
 			for (let square in shape){
 				shape[square]
-				allColoredBlocks.push({
+				allColoredSquares.push({
 					...shape[square],
 					color,
 				})
 			}
 		}
-		return allColoredBlocks
+		this.setState({allColoredSquares})
+		console.log('collated')
 
+	}
 
+	fall(){
+
+		const downArray = JSON.parse(JSON.stringify(this.state.allColoredSquares))
+
+		for (let square in downArray){
+			if (downArray[square].y > 0){
+				downArray[square].y--
+			}
+		}
+		console.log(downArray)
+		this.setState({allColoredSquares: downArray})
 	}
 
 	getPlayfield (){
 		const grid = []
 
 		let { rows, cols } = this.props
-		// console.log(this.collateBlocks()[0].x)
-
-		const coloredBlocks = this.collateBlocks()
-
 
 		for (let row = rows -1; row >= 0; row--){
-			// const rowColoredBlocks = this.collateBlocks().filter(el => {el.y === rows} )
 			grid.push(
-				<PlayfieldRow y={row} cols={cols} coloredBlocks={coloredBlocks}/>
+				<PlayfieldRow y={row} cols={cols} coloredBlocks={this.state.allColoredSquares} key={`row ${row}`}/>
 			)
 		}
 
@@ -62,9 +83,6 @@ class Playfield extends Component{
 
 
 	render (){
-
-		// const rows = 20
-		// const cols = 10
 		const grid = this.getPlayfield()
 
 		return (
@@ -87,7 +105,6 @@ const PlayfieldRow = (props) => {
 		let isColored = false;
 		let color = "";
 			isColored = coloredBlocks.find((el) => el.x === col && el.y === y)
-			// console.log(startSquare)
 			color = isColored ? isColored.color : "";
 
 			if (isColored){
@@ -101,7 +118,6 @@ const PlayfieldRow = (props) => {
 			}
 
 	}
-	console.log(gridRow)
 	return (
 		<div className="fieldRow" key={y}>
 			{gridRow}
