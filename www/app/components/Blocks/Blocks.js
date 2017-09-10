@@ -31,29 +31,11 @@ const translate = (shape, start) => {
 	return shape;
 }
 
-/** 
-  * for Tetris SRS to work, you must rotate the block 90 degrees 1-3 times, rather than
-  * rotating by 180 or 270 degrees once
-  */
-const rotateCoords = (coords) => {
-
-}
-
 const rotate = (shape, rotation) => {
 	const timesToRotate = rotation / 90 % 4
 	for (let square in shape){
 		let { x, y } = shape[square]
 		let rotatedX, rotatedY
-		// let timesdone = 1
-		// console.log('new block')
-		// const rotated = times(timesToRotate)(()=>{
-		// 	console.log('times done: ' + timesdone)
-		// 	console.log(x, y)
-		// 	console.log('====>')
-		// 	rotatedX = -y
-		// 	rotatedY = x
-		// 	console.log(rotatedX, rotatedY)
-		// 	timesdone++
 
 		switch (rotation) {
 			case 90:
