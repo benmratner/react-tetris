@@ -12,7 +12,7 @@ constructor (props){
 		const blocks = [
 				Blocks("T", { "x": 0, "y": 15, "r": 0 }),
 				Blocks("T", { "x": 5, "y": 15, "r": 90 }),
-				Blocks("T", { "x": 0, "y": 10, "r": 180 }),
+				Blocks("T", { "x": 0, "y": 0, "r": 180 }),
 				Blocks("T", { "x": 5, "y": 10, "r": 270 }),
 
 

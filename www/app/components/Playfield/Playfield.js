@@ -49,10 +49,10 @@ class Playfield extends Component{
 		const coloredBlocks = this.collateBlocks()
 
 
-		for (rows; rows >= 1; rows--){
+		for (let row = rows -1; row >= 0; row--){
 			// const rowColoredBlocks = this.collateBlocks().filter(el => {el.y === rows} )
 			grid.push(
-				<PlayfieldRow y={rows} cols={cols} coloredBlocks={coloredBlocks}/>
+				<PlayfieldRow y={row} cols={cols} coloredBlocks={coloredBlocks}/>
 			)
 		}
 
@@ -92,15 +92,16 @@ const PlayfieldRow = (props) => {
 
 			if (isColored){
 				gridRow.push(
-					<PlaySquare x={col} y={y} color={color} key={col*y}/>
+					<PlaySquare x={col} y={y} color={color} key={`${col}, ${y}`}/>
 				)
 			} else {
 				gridRow.push(
-					<PlaySquare x={col} y={y} key={col*y}/>
+					<PlaySquare x={col} y={y} key={`${col}, ${y}`}/>
 				)
 			}
 
 	}
+	console.log(gridRow)
 	return (
 		<div className="fieldRow" key={y}>
 			{gridRow}
