@@ -9,16 +9,20 @@ class Playfield extends Component{
 		this.displayName = "Home"
 
 		this.state = {
-			"blocksInPlay": [
-				Blocks("T", { "x": 1, "y": 10, "r": 90 }),
-				Blocks("T", { "x": 8, "y": 19 }),
-				Blocks("S", { "x": 3, "y": 10 }),
-				Blocks("T", { "x": 0, "y": 0, "r": 90}),
-			],
+			"blocksInPlay": []
 		}
+	}
+	componentDidMount() {
+		this.setState({blocksInPlay: this.props.blocksInPlay})
+		
+	}
+	componentWillReceiveProps(nextProps) {
+		this.setState({blocksInPlay: nextProps.blocksInPlay})
+		
 	}
 
 	collateBlocks(){
+		console.log(this.state.blocksInPlay)
 		let allColoredBlocks = []
 		for (let i = this.state.blocksInPlay.length - 1; i >= 0; i--) {
 			const { shape, color } = this.state.blocksInPlay[i];
